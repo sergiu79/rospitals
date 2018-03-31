@@ -1,1 +1,101 @@
-[{}]
+[
+    {
+        "id": 1,
+        "name": "Spitalul Clinic Judetean de Urgenta Craiova",
+        "city": {
+            "id": 1,
+            "name": "Craiova"
+        },
+        "county": {
+            "id": 1,
+            "name": "Dolj"
+        },
+        "address": "Str. Tabaci nr. 1",
+        "phone":  "0251502200",
+        "website": "www.scjuc.ro",
+        "location": {
+            "lat": 44,
+            "long": 23
+        }
+    },
+
+    {
+        "id": 2,
+        "name": "Spitalul Clinic de Boli Infectioase si Pneumofiziologie Craiova",
+        "city": {
+            "id": 1,
+            "name": "Craiova"
+        },
+        "county": {
+            "id": 1,
+            "name": "Dolj"
+        },
+        "address": "Str. Calea Bucuresti nr. 126",
+        "phone":  "0372273665",
+        "website": "www.vbabes-cv.ro",
+        "location": {
+            "lat": 44,
+            "long": 23
+        }
+    },
+
+    {
+        "id": 3,
+        "name": "Spitalul Clinic de Neuropsihiatrie Craiova",
+        "city": {
+            "id": 1,
+            "name": "Craiova"
+        },
+        "county": {
+            "id": 1,
+            "name": "Dolj"
+        },
+        "address": "Calea Bucuresti nr. 99",
+        "phone":  "0251597791",
+        "website": "www.scnpc.ro",
+        "location": {
+            "lat": 44,
+            "long": 23
+        }
+    },
+
+    {
+        "id": 4,
+        "name": "Spitalul Clinic Filantropia Craiova",
+        "city": {
+            "id": 1,
+            "name": "Craiova"
+        },
+        "county": {
+            "id": 1,
+            "name": "Dolj"
+        },
+        "address": "Str. Mihai Viteazu nr. 20",
+        "phone":  "0251307500",
+        "website": "www.filantropia.ro",
+        "location": {
+            "lat": 44,
+            "long": 23
+        }
+    },
+
+    {
+        "id": 5,
+        "name": "Spitalul Clinic CFR Craiova",
+        "city": {
+            "id": 1,
+            "name": "Craiova"
+        },
+        "county": {
+            "id": 1,
+            "name": "Dolj"
+        },
+        "address": "Str. Stirbei-Voda nr. 6",
+        "phone":  "0251532436",
+        "website": "spitalcf.oltenia.ro",
+        "location": {
+            "lat": 44,
+            "long": 23
+        }
+    }
+]
