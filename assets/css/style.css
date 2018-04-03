@@ -47,8 +47,49 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.nav, header {
+    background-color: #43648c;
+    line-height: 2em;
+    color: white;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    height: 50px;
+}
+.menu {
+    float: right;
+    margin-right: 9em;
+    list-style-type: none;
+    margin-top: 0;
+}
 
+.menu ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.menu li{
+    display: inline;
+    
+	vertical-align: middle;
+}
+.menu li a {
+    text-decoration: none;
+    color: lightgrey;
+	padding: 15px;
+    line-height: 45px;
+}
+.menu a.active{
+    color: white;
+}
+.menu a:hover{
+	background-color: white;
+	color: black;
+	
+}
 .img-size {
     width: 25px;
     height: 25px;
 }
+
