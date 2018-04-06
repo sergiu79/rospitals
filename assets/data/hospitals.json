@@ -12,7 +12,7 @@
         },
         "address": "Str. Tabaci nr. 1",
         "phone":  "0251502200",
-        "website": "www.scjuc.ro",
+        "website": "http://www.scjuc.ro",
         "location": {
             "lat": 44,
             "long": 23
@@ -32,7 +32,7 @@
         },
         "address": "Str. Calea Bucuresti nr. 126",
         "phone":  "0372273665",
-        "website": "www.vbabes-cv.ro",
+        "website": "http://www.vbabes-cv.ro",
         "location": {
             "lat": 44,
             "long": 23
@@ -52,7 +52,7 @@
         },
         "address": "Calea Bucuresti nr. 99",
         "phone":  "0251597791",
-        "website": "www.scnpc.ro",
+        "website": "http://www.scnpc.ro",
         "location": {
             "lat": 44,
             "long": 23
@@ -72,7 +72,7 @@
         },
         "address": "Str. Mihai Viteazu nr. 20",
         "phone":  "0251307500",
-        "website": "www.filantropia.ro",
+        "website": "http://www.filantropia.ro",
         "location": {
             "lat": 44,
             "long": 23
@@ -92,7 +92,7 @@
         },
         "address": "Str. Stirbei-Voda nr. 6",
         "phone":  "0251532436",
-        "website": "spitalcf.oltenia.ro",
+        "website": "http://spitalcf.oltenia.ro",
         "location": {
             "lat": 44,
             "long": 23
