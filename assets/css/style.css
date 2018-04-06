@@ -93,3 +93,22 @@ table {
     height: 25px;
 }
 
+a {
+    text-decoration:  none;
+}
+
+.disclaimer {
+    text-align:  center;
+}
+
+.social-media {
+    float: right;
+    margin: 20px;
+}
+
+nav.footer-nav {
+    display:  inline-block;
+    margin: 20px;
+}
+
+
