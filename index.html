@@ -28,8 +28,10 @@ and open the template in the editor.
             </nav>
         </header>
         <main>
-        
+
             <div class="container">
+                <div id="map"></div>
+
                 <div class="hospitals-list"></div>
                 <button type="button" class="btn btn-primary" id="get-hospitals">View List</button>
             </div>
@@ -72,6 +74,9 @@ and open the template in the editor.
         <script src="assets/js/3rd-party/jquery.min.js"></script>
         <script src="assets/js/3rd-party/bootstrap.min.js"></script>
         <script src="assets/js/app.js"></script>
+        <script src="assets/js/map.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg1cxZZ9jnoOQI9aAHwQMshy2Lrt5vqyQ&callback=initMap">
+        </script>
 
     </body>
 </html>
