@@ -10,7 +10,7 @@ HospitalsListView.prototype = {
         
     },
     loadData: function () {
-        $.getJSON('assets/data/hospitals.json', function (data) {
+        $.getJSON('http://localhost:3000/api/hospitals/findOne?_where=(name,like,Maria)', function (data) {
             let output = `<table class="table">`;
             output += `<thead class="thead-light">
                 <tr>
@@ -26,8 +26,8 @@ HospitalsListView.prototype = {
 
                 output += `<tr>`;
                 output += `<td>${value.name}</td>`;
-                output += `<td>${value.city.name}</td>`;
-                output += `<td>${value.county.name}</td>`;
+                output += `<td>${value.city}</td>`;
+                output += `<td>${value.county}</td>`;
                 output += `<td>${value.address}</td>`;
                 output += `<td>${value.phone} <br> <a href="${value.website}">Go to website</a></td>`;
                 output += `</tr>`;
