@@ -1,11 +1,11 @@
 $(document).ready(function initMap() {
     var map, infoWindow;
-    map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map($('#map')[0], {
         center: {
-            lat: 0,
-            lng: 0
+            lat: 44.333333,
+            lng: 23.816667
         },
-        zoom: 10,
+        zoom: 10
     });
     infoWindow = new google.maps.InfoWindow;
 
