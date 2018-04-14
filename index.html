@@ -20,22 +20,15 @@ and open the template in the editor.
             </div>
             <nav>
                 <ul class="menu">
-                    <li><a class="active" href="index.html">Spitale</a></li>
-                    <li><a href="departments.html">Sectii</a></li>
-                    <li><a href="doctors.html">Doctori</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li class="home"><a class="active" href="#">Spitale</a></li>
+                    <li class="departments"><a href="#">Sectii</a></li>
+                    <li class="doctors"><a href="#">Doctori</a></li>
+                    <li class="contact"><a href="#">Contact</a></li>
                 </ul>
             </nav>
         </header>
         <main>
-
-            <div class="container">
-                <div id="map"></div>
-
-                <div class="hospitals-list"></div>
-                <button type="button" class="btn btn-primary" id="get-hospitals">View List</button>
-            </div>
-
+            <div id="map">din index</div>
         </main>
         <footer>
             <div class="container">
@@ -73,10 +66,14 @@ and open the template in the editor.
 
         <script src="assets/js/3rd-party/jquery.min.js"></script>
         <script src="assets/js/3rd-party/bootstrap.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg1cxZZ9jnoOQI9aAHwQMshy2Lrt5vqyQ"></script>
+        <script src="assets/js/views/HomeView.js"></script>
+        <script src="assets/js/views/HospitalsListView.js"></script>
         <script src="assets/js/app.js"></script>
-        <script src="assets/js/map.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg1cxZZ9jnoOQI9aAHwQMshy2Lrt5vqyQ&callback=initMap">
+        <script>
+            $(document).ready(function(){
+                rospitalsApp = new App();
+            });
         </script>
-
     </body>
 </html>
