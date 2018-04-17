@@ -10,7 +10,7 @@ HospitalsListView.prototype = {
         
     },
     loadData: function () {
-        $.getJSON('http://localhost:3000/api/hospitals/findOne?_where=(name,like,Maria)', function (data) {
+        $.getJSON('http://localhost:3000/api/hospitals', function (data) {
             let output = `<table class="table">`;
             output += `<thead class="thead-light">
                 <tr>
