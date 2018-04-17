@@ -48,17 +48,16 @@ table {
     border-spacing: 0;
 }
 .nav, header {
-    background-color: #43648c;
-    line-height: 2em;
-    color: white;
-    font-size: 22px;
+    font-size: 18px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    height: 50px;
+}
+
+#logo, img {
+    width: 100px;
+    height: 100px;
 }
 .menu {
-    float: right;
-    margin-right: 9em;
     list-style-type: none;
     margin-top: 0;
 }
@@ -71,28 +70,21 @@ table {
 
 .menu li{
     display: inline;
-
     vertical-align: middle;
 }
-.menu li a {
-    text-decoration: none;
-    color: lightgrey;
-    padding: 15px;
-    line-height: 45px;
-}
-.menu a.active{
-    color: white;
+.menu li a.active{
+    color: #083b66;
 }
 .menu a:hover{
-    background-color: white;
     color: black;
-
 }
 
 #map {
     width: 100%;
     height: 400px;
     background-color: grey;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .img-size {
     width: 25px;
@@ -109,12 +101,16 @@ a {
 
 .social-media {
     float: right;
-    margin: 20px;
+    margin-top: 20px;
 }
 
 nav.footer-nav {
     display:  inline-block;
-    margin: 20px;
+    margin-top: 20px;
 }
-
+.footer-nav, li{
+    display: inline;
+    padding-right: 15px;
+    font-size: 14pt;
+}
 
