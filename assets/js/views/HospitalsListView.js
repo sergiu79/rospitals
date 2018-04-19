@@ -10,34 +10,59 @@ HospitalsListView.prototype = {
         
     },
     loadData: function () {
-        $.getJSON('http://localhost:3000/api/hospitals', function (data) {
-            let output = `<table class="table">`;
-            output += `<thead class="thead-light">
-                <tr>
-                  <th>Hospital Name</th>
-                  <th>City</th>
-                  <th>County</th>
-                  <th>Address</th>
-                  <th>Contact</th>
-                </tr>
-                </thead>
-                <tbody>`;
-            $.each(data, function (key, value) {
-
-                output += `<tr>`;
-                output += `<td>${value.name}</td>`;
-                output += `<td>${value.city}</td>`;
-                output += `<td>${value.county}</td>`;
-                output += `<td>${value.address}</td>`;
-                output += `<td>${value.phone} <br> <a href="${value.website}">Go to website</a></td>`;
-                output += `</tr>`;
-
+       
+            $('.hospitals-list').kendoGrid({
+                dataSource: {
+                    type: "json",
+                    transport: {
+                        read: "http://localhost:3000/api/hospitals"
+                    },
+                    schema: {
+                        model: {
+                            fields: {
+                                id: { type: "number" },
+                                name: { type: "string" },
+                                county: { type: "string" },
+                                city: { type: "string" },
+                                type: {type: "string"}    
+                            }
+                        }
+                    },
+                    pageSize: 20,
+                    serverPaging: false,
+                    serverFiltering: false,
+                    serverSorting: false
+                },
+                height: 550,
+                filterable: true,
+                sortable: true,
+                pageable: true,
+                columns: [{
+                        field:"id",
+                        filterable: false
+                    },
+                    {
+                        field: "name",
+                        title: "Nume",
+                        width: 400
+                    }, 
+                    {
+                        field: "city",
+                        title: "Oras",
+                        width: 250
+                    }, 
+                    {
+                        field: "county",
+                        title: "Judet",
+                        width: 200
+                    },
+                    {
+                        field: "type",
+                        title: "Tip"
+                    }
+                ]
             });
-            output += `</tbody>`;
 
-            $('.hospitals-list').html(output);
-
-        });
     }
 };
 
