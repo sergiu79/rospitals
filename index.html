@@ -9,8 +9,9 @@ and open the template in the editor.
         <title>Rospitals</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        
 
 
     </head>
@@ -20,6 +21,21 @@ and open the template in the editor.
                 <div id="logo">
                     <img src="assets/img/rospitals.png" alt="logo">
                 </div>
+                <div id="form-login">
+                    <form class="form-inline" action="/action_page.php">
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" id="email">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"> Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                </div>
+                
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -67,11 +83,11 @@ and open the template in the editor.
                         <img class="img-size" src="assets/img/googleplus.png" title="Go to Google Plus page" alt="Google Plus link"></a>
                 </div>
             </footer>
-                <div class="disclaimer">
-                    <p>RoSpitals © 2018. Toate drepturile rezervate.<br/>
+            <div class="disclaimer">
+                <p>RoSpitals © 2018. Toate drepturile rezervate.<br/>
                     <a href="https://termsfeed.com/terms-conditions/caaf2782ae0f4fe12b878587b09da354" target="_blank">Terms and conditions</a></p>
-                </div>
-            
+            </div>
+
         </div>
         <script src="assets/js/3rd-party/jquery.min.js"></script>
         <script src="assets/js/3rd-party/bootstrap.min.js"></script>
