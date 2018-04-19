@@ -57,6 +57,10 @@ table {
     width: 100px;
     height: 100px;
 }
+
+#form-login {
+    display: inline-block;
+}
 .menu {
     list-style-type: none;
     margin-top: 0;
