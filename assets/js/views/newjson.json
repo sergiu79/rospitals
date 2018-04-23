@@ -1,0 +1,23 @@
+SELECT d.id,d.fullname,d.title,d.rating,d.doctor_rank,s.name as specialty,d.specialty_id FROM `doctors` as d inner join `specialties` 
+as s on d.specialty_id=s.id WHERE 1
+
+
+
+
+
+
+SELECT d.id,d.fullname,d.title,d.rating,d.doctor_rank
+FROM doctors as d
+    JOIN specialties as s
+        ON d.specialty_id=s.id
+        
+        
+        
+        
+        
+SELECT d.specialty_id, s.id
+   FROM doctors as d
+    JOIN specialties as s
+        ON d.specialty_id = s.id
+        
+        /api/xjoin?_join=d.doctors,_j,s.specialties&_on1=(d.specialty_id,eq,s.id)&_fields=d.id,d.fullname,d.title,d.rating,d.doctor_rank,s.name,d.specialty_id
