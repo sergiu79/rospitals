@@ -58,9 +58,22 @@ table {
     height: 100px;
 }
 
-#form-login {
-    display: inline-block;
+#login-form {
+    float: right;
 }
+
+form {
+    display:  inline-flex;
+}
+
+input.form-control {
+    margin: 15px 5px 5px 5px;
+}
+
+button.btn.btn-primary.btn-block {
+    margin: 15px 5px 5px 5px;
+}
+
 .menu {
     list-style-type: none;
     margin-top: 0;
