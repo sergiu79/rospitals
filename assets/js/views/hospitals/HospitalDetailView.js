@@ -1,10 +1,10 @@
-function HospitalDetailView(config) {
+rospitals.views.hospitals.HospitalDetailView = function(config) {
     this.id = config.id;
     this.hospitalData = null;
     this.init();
 }
 
-HospitalDetailView.prototype = {
+rospitals.views.hospitals.HospitalDetailView.prototype = {
 
     init: function () {
         this.loadData();

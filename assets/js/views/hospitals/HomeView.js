@@ -1,7 +1,7 @@
-function HomeView() {
+rospitals.views.hospitals.HomeView = function() {
     this.init();
 }
-HomeView.prototype = {
+rospitals.views.hospitals.HomeView.prototype = {
     init: function () {
         this.attachListeners();
         this.initMap();
@@ -16,7 +16,6 @@ HomeView.prototype = {
         infoWindow = new google.maps.InfoWindow();
         $.getJSON('http://localhost:3000/api/hospitals', function (data) {
             var marker, i;
-            console.log(data);
             for (i = 0; i < data.length; i++) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(data[i].lat, data[i].long),
