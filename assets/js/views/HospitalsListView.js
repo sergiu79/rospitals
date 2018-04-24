@@ -3,14 +3,16 @@ function HospitalsListView() {
 }
 
 HospitalsListView.prototype = {
+
     init: function () {
-        this.loadData();
+        this.loadData();    
     },
     attachListeners: function () {
         
     },
+
     loadData: function () {
-       
+            
             $('.hospitals-list').kendoGrid({
                 dataSource: {
                     type: "json",
@@ -35,6 +37,15 @@ HospitalsListView.prototype = {
                 },
                 height: 550,
                 filterable: true,
+                selectable: 'row',
+                change: function(event){
+                    console.log(event);
+                    event.preventDefault();
+                    var row=event.sender.select();
+                    var id=$(row[0]).find('td:first').text();
+                    rospitalsApp.loadView({module: 'hospital-detail'}, {id: id});
+
+                },
                 sortable: true,
                 pageable: true,
                 columns: [{
@@ -45,7 +56,9 @@ HospitalsListView.prototype = {
                         field: "name",
                         title: "Nume",
                         width: 400
-                    }, 
+                        
+                    },
+                    //
                     {
                         field: "city",
                         title: "Oras",

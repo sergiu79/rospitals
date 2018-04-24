@@ -20,22 +20,31 @@ and open the template in the editor.
     <body>
         <div class="container">
             <header>
-                <div id="logo">
-                    <img src="assets/img/rospitals.png" alt="logo">
-                </div>
-                <div id="form-login">
-                    <form class="form-inline" action="/action_page.php">
-                        <label for="email">Email address:</label>
-                        <input type="email" class="form-control" id="email">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox"> Remember me
-                            </label>
+                <span id="logo">
+                <img src="assets/img/rospitals.png" alt="logo">
+            </span>
+            <div id="login-form">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="Adresa de e-mail" type="email">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                        <!-- input-group.// -->
+                    </div>
+                    <!-- form-group// -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="******" type="password">
+                        </div>
+                        <!-- input-group.// -->
+                    </div>
+                    <!-- form-group// -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Login </button>
+                    </div>
+                    <!-- form-group// -->
+                </form>
+
                 </div>
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -89,6 +98,7 @@ and open the template in the editor.
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg1cxZZ9jnoOQI9aAHwQMshy2Lrt5vqyQ"></script>
         <script src="assets/js/views/HomeView.js"></script>
         <script src="assets/js/views/HospitalsListView.js"></script>
+        <script src="assets/js/views/HospitalDetailView.js"></script>
         <script src="assets/js/app.js"></script>
         <script>
             $(document).ready(function () {

@@ -9,11 +9,11 @@
          this.loadView({});
      },
      
-     loadView: function(event) {
+     loadView: function(event, config) {
          var moduleName = $(event.currentTarget).attr('class') || event.module || 'home';
-         var modules = ['home', 'departments', 'doctors', 'contact', 'hospitals-list'];
+         var modules = ['home', 'departments', 'doctors', 'contact', 'hospitals-list','hospital-detail'];
          var paths = ['assets/views/home.html', 'assets/views/departments.html', 'assets/views/doctors.html',
-         'assets/views/contact.html', 'assets/views/hospitals-list.html'];
+         'assets/views/contact.html', 'assets/views/hospitals-list.html', 'assets/views/hospital-detail.html'];
          var path = paths[modules.indexOf(moduleName)];
          $('main').load(path, function(){
              switch(moduleName) {
@@ -26,6 +26,8 @@
                      break;
                  case 'contact':
                      break;
+                 case 'hospital-detail':
+                    var hospitalDetailView = new HospitalDetailView(config);
                  case 'hospitals-list':
                      var hospitalsListView = new HospitalsListView();
                      break;
