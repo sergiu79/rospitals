@@ -10,20 +10,23 @@ HospitalDetailView.prototype = {
         this.loadData();
     },
     loadData: function () {
-        var self = this;
-        var myUrl = "http://localhost:3000/api/hospitals/"+this.id;
+        var myUrl = "http://localhost:3000/api/hospitals/" + this.id;
         $.ajax({
-            url: myUrl
-        }).done(function (data) {
-            if (data[0]) {
-                self.hospitalData = data[0];
-
-                self.initMap();
-                self.showHospitalData();
-            } else {
-                console.log("Hospital not found");
+            url: myUrl,
+            success: $.proxy(this.onDataLoaded, this),
+            error: function(response, status, error) {
+                console.log('Error: ', status, error, response);
             }
-        });
+        }).done();
+    },
+    onDataLoaded: function (data) {
+        if (data[0]) {
+            this.hospitalData = data[0];
+            this.initMap();
+            this.showHospitalData();
+        } else {
+            console.log("Hospital not found");
+        }
     },
     showHospitalData: function () {
         $("#hospital-name").text(this.hospitalData['name']);
@@ -48,6 +51,6 @@ HospitalDetailView.prototype = {
         infoWindow.open(map);
     },
     attachListeners: function () {
-        
+
     }
 }
