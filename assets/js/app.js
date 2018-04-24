@@ -9,11 +9,11 @@
          this.loadView({});
      },
      
-     loadView: function(event) {
+     loadView: function(event, config) {
          var moduleName = $(event.currentTarget).attr('class') || event.module || 'home';
-         var modules = ['home', 'departments', 'doctors', 'contact', 'hospitals-list'];
+         var modules = ['home', 'departments', 'doctors', 'contact', 'hospitals-list','hospital-detail'];
          var paths = ['assets/views/home.html', 'assets/views/departments.html', 'assets/views/doctors.html',
-         'assets/views/contact.html', 'assets/views/hospitals-list.html'];
+         'assets/views/contact.html', 'assets/views/hospitals-list.html', 'assets/views/hospital-detail.html'];
          var path = paths[modules.indexOf(moduleName)];
          $('main').load(path, function(){
              switch(moduleName) {
@@ -27,6 +27,8 @@
                      break;
                  case 'contact':
                      break;
+                 case 'hospital-detail':
+                    var hospitalDetailView = new HospitalDetailView(config);
                  case 'hospitals-list':
                      var hospitalsListView = new HospitalsListView();
                      break;
@@ -41,58 +43,3 @@
      }
      
  };
-
-// GLOBAL APP CONTROLLER
-/*
-let controller = (function(){
-
-    let setupEventListeners = function(){
-
-        $('#get-hospitals').on('click', function(){
-            
-            $.getJSON('assets/data/hospitals.json', function(data){
-                let output = `<table class="table">`;
-                output += `<thead class="thead-light">
-                <tr>
-                  <th>Hospital Name</th>
-                  <th>City</th>
-                  <th>County</th>
-                  <th>Address</th>
-                  <th>Contact</th>
-                </tr>
-                </thead>
-                <tbody>`;
-                $.each(data, function(key,value){
-            
-                    output += `<tr>`;
-                    output += `<td>${value.name}</td>`;
-                    output += `<td>${value.city.name}</td>`;
-                    output += `<td>${value.county.name}</td>`;
-                    output += `<td>${value.address}</td>`;
-                    output += `<td>${value.phone} <br> <a href="${value.website}">Go to website</a></td>`;
-                    output += `</tr>`;
-            
-                })
-                output += `</tbody>`;
-    
-                $('.hospitals-list').html(output);
-                
-            });
-
-        });
-    
-    };
-
-    return {
-        init: function(){
-            setupEventListeners();
-        }
-    }
-    
-
-}());
-
-controller.init();
-
-*/
-

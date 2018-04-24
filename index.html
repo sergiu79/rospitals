@@ -9,20 +9,44 @@ and open the template in the editor.
         <title>Rospitals</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
         <!-- Common Kendo UI CSS for web widgets and widgets for data visualization. -->
         <link href="assets/css/styles/kendo.common.min.css" rel="stylesheet">
         <!-- Default Kendo UI theme CSS for web widgets and widgets for data visualization. -->
         <link href="assets/css/styles/kendo.default.min.css" rel="stylesheet">
-
     </head>
     <body>
         <div class="container">
             <header>
-                <div id="logo">
-                    <img src="assets/img/rospitals.png" alt="logo">
+                <span id="logo">
+                <img src="assets/img/rospitals.png" alt="logo">
+            </span>
+            <div id="login-form">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="Adresa de e-mail" type="email">
+                        </div>
+                        <!-- input-group.// -->
+                    </div>
+                    <!-- form-group// -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="******" type="password">
+                        </div>
+                        <!-- input-group.// -->
+                    </div>
+                    <!-- form-group// -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Login </button>
+                    </div>
+                    <!-- form-group// -->
+                </form>
+
                 </div>
+
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -35,20 +59,21 @@ and open the template in the editor.
                             <li class="contact"><a class="nav-item nav-link" href="#">Contact</a></li>
                         </div>
                     </div>
-                </nav>
+              </nav>
             </header>
-            <main>
-                <div id="map">din index</div>
-            </main>
         </div>
+        <main>
+            <div id="map">din index</div>
+        </main>
+
         <div class="container">
             <footer>
                 <nav class="footer-nav">
                     <ul>
-                        <li><a href="index.html" title="Spitale">Spitale</a></li>
-                        <li><a href="departments.html" title="Sectii">Sectii</a></li>
-                        <li><a href="doctors.html" title="Doctori">Doctori</a></li>
-                        <li><a href="contact.html" title="Contact">Contact</a></li>
+                        <li><a href="#" title="Spitale">Spitale</a></li>
+                        <li><a href="#" title="Sectii">Sectii</a></li>
+                        <li><a href="#" title="Doctori">Doctori</a></li>
+                        <li><a href="#" title="Contact">Contact</a></li>
                     </ul>    
                 </nav>
                 <div class="social-media">
@@ -60,14 +85,12 @@ and open the template in the editor.
                         <img class="img-size" src="assets/img/googleplus.png" title="Go to Google Plus page" alt="Google Plus link"></a>
                 </div>
             </footer>
-                <div class="disclaimer">
-                    <p>RoSpitals © 2018. Toate drepturile rezervate.<br/>
+            <div class="disclaimer">
+                <p>RoSpitals © 2018. Toate drepturile rezervate.<br/>
                     <a href="https://termsfeed.com/terms-conditions/caaf2782ae0f4fe12b878587b09da354" target="_blank">Terms and conditions</a></p>
-                </div>
             </div>
-        </footer>
+        </div>
 
-           
         <script src="assets/js/3rd-party/jquery.min.js"></script>
         <!-- Kendo UI JavaScript -->
         <script src="assets/js/3rd-party/js/kendo.web.min.js"></script>
@@ -76,6 +99,7 @@ and open the template in the editor.
         <script src="assets/js/views/HomeView.js"></script>
         <script src="assets/js/views/HospitalsListView.js"></script>
         <script src="assets/js/views/DoctorsList.js"></script>
+        <script src="assets/js/views/HospitalDetailView.js"></script>
         <script src="assets/js/app.js"></script>
         <script>
             $(document).ready(function () {
