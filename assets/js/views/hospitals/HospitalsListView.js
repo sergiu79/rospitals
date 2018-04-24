@@ -1,9 +1,8 @@
-//$.proxy(fn, scope)
-function HospitalsListView() {
+rospitals.views.hospitals.HospitalsListView = function() {
     this.init();
 }
 
-HospitalsListView.prototype = {
+rospitals.views.hospitals.HospitalsListView.prototype = {
 
     init: function () {
         this.loadData();
