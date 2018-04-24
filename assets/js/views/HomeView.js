@@ -16,7 +16,6 @@ HomeView.prototype = {
             zoom: 10
         });
         infoWindow = new google.maps.InfoWindow();
-        var oThis = this;
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
@@ -28,9 +27,9 @@ HomeView.prototype = {
                 infoWindow.setContent('Location found.');
                 infoWindow.open(map);
                 map.setCenter(pos);
-            }, function () {
-                oThis.handleLocationError(true, infoWindow, map.getCenter(), map);
-            });
+            }, $.proxy(function () {
+               this.handleLocationError(true, infoWindow, map.getCenter(), map);
+            }, this));
         } else {
             // Browser doesn't support Geolocation
             this.handleLocationError(false, infoWindow, map.getCenter(), map);
