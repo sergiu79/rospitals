@@ -21,6 +21,7 @@
                      var homeView = new HomeView();
                      break;
                  case 'doctors':
+                     var doctorsView = new DoctorsList();
                      break;
                  case 'departments':
                      break;
