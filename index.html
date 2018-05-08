@@ -25,28 +25,32 @@ and open the template in the editor.
                 <span id="logo">
                     <img src="assets/img/rospitals.png" alt="logo">
                 </span>
-                <div id="login-form">
+                <div id="login-form" class="hide">
                     <form>
                         <div class="form-group">
                             <div class="input-group">
-                                <input class="form-control" placeholder="Adresa de e-mail" type="email">
+                                <input id="email" class="form-control" placeholder="Adresa de e-mail" type="email">
                             </div>
                             <!-- input-group.// -->
                         </div>
                         <!-- form-group// -->
                         <div class="form-group">
                             <div class="input-group">
-                                <input class="form-control" placeholder="******" type="password">
+                                <input id="password" class="form-control" placeholder="******" type="password">
                             </div>
                             <!-- input-group.// -->
                         </div>
                         <!-- form-group// -->
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block"> Login </button>
+                            <button id="login" class="btn btn-primary btn-block"> Login </button>
                         </div>
                         <!-- form-group// -->
                     </form>
 
+                </div>
+                <div id="user-profile" class="hide">
+                    <span></span>
+                    <button id="logout" class="btn btn-primary btn-block"> Logout </button>
                 </div>
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -148,6 +152,7 @@ and open the template in the editor.
         <!-- Kendo UI JavaScript -->
         <script src="assets/js/3rd-party/js/kendo.web.min.js"></script>
         <script src="assets/js/3rd-party/bootstrap.min.js"></script>
+        <script src="assets/js/3rd-party/jquery.cookie.js"></script>
         <script>
             //namespace
             var rospitals = rospitals || {
