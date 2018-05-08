@@ -48,7 +48,8 @@ rospitals.views.hospitals.HospitalsListView.prototype = {
             pageable: true,
             columns: [{
                     field: "id",
-                    filterable: false
+                    filterable: false,
+                    hidden: true
                 },
                 {
                     field: "name",
@@ -56,7 +57,6 @@ rospitals.views.hospitals.HospitalsListView.prototype = {
                     width: 400
 
                 },
-                //
                 {
                     field: "city",
                     title: "Oras",
@@ -76,4 +76,3 @@ rospitals.views.hospitals.HospitalsListView.prototype = {
 
     }
 };
-
