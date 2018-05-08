@@ -88,7 +88,8 @@ rospitals.views.doctors.DoctorsList.prototype = {
             pageable: true,
             columns: [{
                     field: "d_id",
-                    filterable: false
+                    filterable: false,
+                    hidden: true
                 },
                 {
                     field: "d_fullname",

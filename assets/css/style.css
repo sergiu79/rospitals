@@ -134,4 +134,7 @@ nav.footer-nav {
     padding-right: 15px;
     font-size: 14pt;
 }
-
+/* helpers */
+.hide {
+    display: none;
+}
