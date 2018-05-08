@@ -1,4 +1,4 @@
-rospitals.views.doctors.DoctorsList = function() {
+rospitals.views.doctors.DoctorsList = function () {
     this.init();
 }
 
@@ -16,7 +16,10 @@ rospitals.views.doctors.DoctorsList.prototype = {
         // cacheing
         var keyword = $(e.currentTarget).val();
         var columns = this.grid.columns;
-        var filter = {logic: 'or', filters: []};
+        var filter = {
+            logic: 'or',
+            filters: []
+        };
         var dataSource = this.grid.dataSource;
         columns.forEach(function (x) {
             if (x.field) {
@@ -28,7 +31,7 @@ rospitals.views.doctors.DoctorsList.prototype = {
                         value: keyword
                     });
                 } else if (type === 'number') {
-                    if (Utils.isNumeric(keyword)) {
+                    if (rospitals.Utils.isNumeric(keyword)) {
                         filter.filters.push({
                             field: x.field,
                             operator: 'eq',
@@ -48,7 +51,7 @@ rospitals.views.doctors.DoctorsList.prototype = {
                             });
                         }
                     }
-                } else if (type === 'boolean' && Utils.getBoolean(keyword) !== null) {
+                } else if (type === 'boolean' && rospitals.Utils.getBoolean(keyword) !== null) {
                     var bool = getBoolean(keyword);
                     filter.filters.push({
                         field: x.field,
@@ -70,10 +73,18 @@ rospitals.views.doctors.DoctorsList.prototype = {
                 schema: {
                     model: {
                         fields: {
-                            d_id: {type: "number"},
-                            d_fullname: {type: "string"},
-                            d_doctor_rank: {type: "string"},
-                            s_name: {type: "string"}
+                            d_id: {
+                                type: "number"
+                            },
+                            d_fullname: {
+                                type: "string"
+                            },
+                            d_doctor_rank: {
+                                type: "string"
+                            },
+                            s_name: {
+                                type: "string"
+                            }
                         }
                     }
                 },
@@ -83,6 +94,7 @@ rospitals.views.doctors.DoctorsList.prototype = {
                 serverSorting: false
             },
             height: 550,
+            navigatable: true,
             filterable: true,
             sortable: true,
             pageable: true,
@@ -102,10 +114,9 @@ rospitals.views.doctors.DoctorsList.prototype = {
                 },
                 {
                     field: "s_name",
-                    title: "specialitate"
+                    title: "Specialitate"
                 }
             ]
         }).data('kendoGrid');
     }
 };
-

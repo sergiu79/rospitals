@@ -107,6 +107,17 @@ button.btn.btn-primary.btn-block {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.hospitals-list.k-grid.k-widget.k-display-block {
+    width: 1140px;
+    margin: auto;
+  }
+
+.row {
+    width: 1140px;
+    margin: auto;
+}
+
 .img-size {
     width: 25px;
     height: 25px;
@@ -114,6 +125,12 @@ button.btn.btn-primary.btn-block {
 
 a {
     text-decoration:  none;
+}
+
+a:hover {
+    text-decoration: blink;
+    color: darkblue;
+    font-weight: 600;
 }
 
 .disclaimer {
