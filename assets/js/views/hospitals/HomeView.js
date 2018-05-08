@@ -37,8 +37,8 @@ rospitals.views.hospitals.HomeView.prototype = {
                     lng: position.coords.longitude
                 };
 
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Te afli aici');
+//                infoWindow.setPosition(pos);
+//                infoWindow.setContent('Te afli aici');
                 infoWindow.open(map);
                 map.setCenter(pos);
             }, $.proxy(function () {

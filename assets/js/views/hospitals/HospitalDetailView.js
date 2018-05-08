@@ -1,4 +1,4 @@
-rospitals.views.hospitals.HospitalDetailView = function(config) {
+rospitals.views.hospitals.HospitalDetailView = function (config) {
     this.id = config.id;
     this.hospitalData = null;
     this.init();
@@ -14,7 +14,7 @@ rospitals.views.hospitals.HospitalDetailView.prototype = {
         $.ajax({
             url: myUrl,
             success: $.proxy(this.onDataLoaded, this),
-            error: function(response, status, error) {
+            error: function (response, status, error) {
                 console.log('Error: ', status, error, response);
             }
         }).done();
@@ -41,7 +41,7 @@ rospitals.views.hospitals.HospitalDetailView.prototype = {
             lng: this.hospitalData.long
         }
         var map, infoWindow;
-        map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map($('#map')[0], {
             center: pos,
             zoom: 15
         });
@@ -53,4 +53,4 @@ rospitals.views.hospitals.HospitalDetailView.prototype = {
     attachListeners: function () {
 
     }
-}
+};

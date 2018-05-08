@@ -22,7 +22,8 @@ rospitals.App.prototype = {
                 case 'doctors':
                     var doctorsView = new rospitals.views.doctors.DoctorsList();
                     break;
-                case 'departments':
+               case 'departments':
+                    var departmentsList = new rospitals.views.departments.DepartmentsList();
                     break;
                 case 'contact':
                     break;

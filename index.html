@@ -5,6 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
+
     <head>
         <title>Rospitals</title>
         <meta charset="UTF-8">
@@ -17,6 +18,7 @@ and open the template in the editor.
         <!-- Default Kendo UI theme CSS for web widgets and widgets for data visualization. -->
         <link href="assets/css/styles/kendo.default.min.css" rel="stylesheet">
     </head>
+
     <body>
         <div class="container">
             <header>
@@ -48,46 +50,97 @@ and open the template in the editor.
                 </div>
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                            aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav menu">
-                            <li class="home"><a class="nav-item nav-link active" href="#">Spitale <span class="sr-only">(current)</span></a></li>
-                            <li class="departments"><a class="nav-item nav-link" href="#">Sectii</a></li>
-                            <li class="doctors"><a class="nav-item nav-link" href="#">Doctori</a></li>
-                            <li class="contact"><a class="nav-item nav-link" href="#">Contact</a></li>
+                            <li class="home">
+                                <a class="nav-item nav-link active" href="#">Spitale
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="departments">
+                                <a class="nav-item nav-link" href="#">Sectii</a>
+                            </li>
+                            <li class="doctors">
+                                <a class="nav-item nav-link" href="#">Doctori</a>
+                            </li>
+                            <li class="contact">
+                                <a class="nav-item nav-link" href="#">Contact</a>
+                            </li>
                         </div>
                     </div>
                 </nav>
             </header>
         </div>
         <main>
-            <div id="map">din index</div>
+            <div id="map"></div>
         </main>
 
         <div class="container">
             <footer>
                 <nav class="footer-nav">
                     <ul>
-                        <li><a href="#" title="Spitale">Spitale</a></li>
-                        <li><a href="#" title="Sectii">Sectii</a></li>
-                        <li><a href="#" title="Doctori">Doctori</a></li>
-                        <li><a href="#" title="Contact">Contact</a></li>
-                    </ul>    
+                        <li class="home">
+                            <a href="#" title="Spitale">Spitale</a>
+                        </li>
+                        <li class="departments">
+                            <a href="#" title="Sectii">Sectii</a>
+                        </li>
+                        <li class="doctors">
+                            <a href="#" title="Doctori">Doctori</a>
+                        </li>
+                        <li class="contact">
+                            <a href="#" title="Contact">Contact</a>
+                        </li>
+                    </ul>
                 </nav>
+
+                <!-- <nav class="navbar navbar-expand-sm navbar-light bg-light">
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="home">
+                                <a class="nav-item nav-link active" href="#">Spitale
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="departments">
+                                <a class="nav-item nav-link" href="#">Sectii</a>
+                            </li>
+                            <li class="doctors">
+                                <a class="nav-item nav-link" href="#">Doctori</a>
+                            </li>
+                            <li class="contact">
+                                <a class="nav-item nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav> -->
+
                 <div class="social-media">
                     <a href="https://www.facebook.com" title="Go to Facebook page" target="_blank">
-                        <img class="img-size" src="assets/img/facebook.png" alt="Facebook link"></a>
+                        <img class="img-size" src="assets/img/facebook.png" alt="Facebook link">
+                    </a>
                     <a href="https://www.twitter.com" title="Go to Twitter page" target="_blank">
-                        <img class="img-size" src="assets/img/twitter.png" alt="Twitter link"></a>
+                        <img class="img-size" src="assets/img/twitter.png" alt="Twitter link">
+                    </a>
                     <a href="https://plus.google.com/" target="_blank">
-                        <img class="img-size" src="assets/img/googleplus.png" title="Go to Google Plus page" alt="Google Plus link"></a>
+                        <img class="img-size" src="assets/img/googleplus.png" title="Go to Google Plus page" alt="Google Plus link">
+                    </a>
                 </div>
             </footer>
             <div class="disclaimer">
-                <p>RoSpitals © 2018. Toate drepturile rezervate.<br/>
-                    <a href="https://termsfeed.com/terms-conditions/caaf2782ae0f4fe12b878587b09da354" target="_blank">Terms and conditions</a></p>
+                <p>RoSpitals © 2018. Toate drepturile rezervate.
+                    <br/>
+                    <a href="https://termsfeed.com/terms-conditions/caaf2782ae0f4fe12b878587b09da354" target="_blank">Terms and conditions</a>
+                </p>
             </div>
         </div>
 
@@ -99,9 +152,9 @@ and open the template in the editor.
             //namespace
             var rospitals = rospitals || {
                 views: {
-                    hospitals : {},
+                    hospitals: {},
                     doctors: {},
-                    specialties: {},
+                    departments: {},
                     contact: {}
                 }
             };
@@ -111,6 +164,7 @@ and open the template in the editor.
         <script src="assets/js/views/hospitals/HomeView.js"></script>
         <script src="assets/js/views/hospitals/HospitalDetailView.js"></script>
         <script src="assets/js/views/hospitals/HospitalsListView.js"></script>
+        <script src="assets/js/views/departments/DepartmentsList.js"></script>
         <script src="assets/js/views/doctors/DoctorsList.js"></script>
         <script src="assets/js/app.js"></script>
         <script>
@@ -120,4 +174,5 @@ and open the template in the editor.
         </script>
 
     </body>
+
 </html>
