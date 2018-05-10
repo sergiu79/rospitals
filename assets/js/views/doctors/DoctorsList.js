@@ -1,6 +1,6 @@
 rospitals.views.doctors.DoctorsList = function () {
     this.init();
-};
+}
 
 rospitals.views.doctors.DoctorsList.prototype = {
     init: function () {
@@ -11,7 +11,35 @@ rospitals.views.doctors.DoctorsList.prototype = {
     attachListeners: function () {
         //https://docs.telerik.com/kendo-ui/knowledge-base/filter-all-columns-with-one-textbox
         $('#filter').on('input', $.proxy(this.onSearchInput, this));
+        $('.doctors-list').on('click', '.delete-button', $.proxy(this.onDeleteButton, this));
     },
+    onDeleteButton: function (event) {
+        if (confirm('Are you sure you want to remove this doctor?')) {
+            var uid = $(event.currentTarget).closest('tr').data('uid');
+            var record = this.grid.dataSource.getByUid(uid);
+            var id = record.d_id;
+            this.removeDoctor(id);
+        }
+    },
+    removeDoctor: function (id) {
+        $.ajax({
+            url: "http://localhost:3000/api/doctors/" + id,
+            type: 'DELETE',
+            success: $.proxy(this.onDoctorSuccessfullyRemoved, this),
+            error: $.proxy(this.onDoctorNotSuccessfullyRemoved, this)
+        });
+    },
+
+    onDoctorSuccessfullyRemoved: function (result) {
+        alert('The doctor was successfully removed');
+        //reloads doctors list data from server
+        this.grid.dataSource.read();
+    },
+
+    onDoctorNotSuccessfullyRemoved: function (result) {
+        alert('The doctor was not successfully removed');
+    },
+
     onSearchInput: function (e) {
         // cacheing
         var keyword = $(e.currentTarget).val();
@@ -68,23 +96,17 @@ rospitals.views.doctors.DoctorsList.prototype = {
             dataSource: {
                 type: "json",
                 transport: {
-                    read: "http://localhost:3000/api/xjoin?_join=d.doctors,_j,s.specialties&_on1=(d.specialty_id,eq,s.id)&_fields=d.id,d.fullname,d.title,d.rating,d.doctor_rank,s.name,d.specialty_id"
+                    read: "http://localhost:3000/api/xjoin?_join=d.doctors,_j,s.specialties&_on1=(d.specialty_id,eq,s.id)&_fields=d.id,d.fullname,d.title,d.rating,d.rank,s.name,d.specialty_id"
+                    //destroy: "http://localhost:3000/api/doctors/:id" //HTTP Type: DELETE
+                    //https://demos.telerik.com/kendo-ui/grid/editing-inline
                 },
                 schema: {
                     model: {
                         fields: {
-                            d_id: {
-                                type: "number"
-                            },
-                            d_fullname: {
-                                type: "string"
-                            },
-                            d_doctor_rank: {
-                                type: "string"
-                            },
-                            s_name: {
-                                type: "string"
-                            }
+                            d_id: {type: "number"},
+                            d_fullname: {type: "string"},
+                            d_rank: {type: "string"},
+                            s_name: {type: "string"}
                         }
                     }
                 },
@@ -100,7 +122,6 @@ rospitals.views.doctors.DoctorsList.prototype = {
             pageable: true,
             columns: [{
                     field: "d_id",
-                    filterable: false,
                     hidden: true
                 },
                 {
@@ -109,12 +130,16 @@ rospitals.views.doctors.DoctorsList.prototype = {
                     width: 400
                 },
                 {
-                    field: "d_doctor_rank",
+                    field: "d_rank",
                     title: "Tip"
                 },
                 {
                     field: "s_name",
                     title: "Specialitate"
+                },
+                {
+                    title: "Actiuni",
+                    template: '<button class="btn btn-primary delete-button">Sterge</button>'
                 }
             ]
         }).data('kendoGrid');

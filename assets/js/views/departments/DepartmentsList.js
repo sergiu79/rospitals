@@ -25,7 +25,7 @@ rospitals.views.departments.DepartmentsList.prototype = {
               },
               name: {
                 type: "string"
-              }
+              },
             }
           }
         },
@@ -41,14 +41,13 @@ rospitals.views.departments.DepartmentsList.prototype = {
       columns: [{
           field: "id",
           width: 50,
-          filterable: false,
-          hidden: true
+          filterable: false
         },
         {
           field: "name",
           title: "Nume",
           width: 400
-        }
+        },
       ]
     }).data('kendoGrid');
   }
