@@ -96,7 +96,7 @@ rospitals.views.doctors.DoctorsList.prototype = {
             dataSource: {
                 type: "json",
                 transport: {
-                    read: "http://localhost:3000/api/xjoin?_join=d.doctors,_j,s.specialties&_on1=(d.specialty_id,eq,s.id)&_fields=d.id,d.fullname,d.title,d.rating,d.rank,s.name,d.specialty_id"
+                    read: "http://localhost:3000/api/xjoin?_join=d.doctors,_j,s.specialties&_on1=(d.specialty_id,eq,s.id)&_fields=d.id,d.fullname,d.title,d.rating,d.rank,s.name,d.specialty_id",
                     //destroy: "http://localhost:3000/api/doctors/:id" //HTTP Type: DELETE
                     //https://demos.telerik.com/kendo-ui/grid/editing-inline
                 },
