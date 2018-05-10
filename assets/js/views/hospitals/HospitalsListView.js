@@ -70,6 +70,10 @@ rospitals.views.hospitals.HospitalsListView.prototype = {
                 {
                     field: "type",
                     title: "Tip"
+                },
+                {
+                    title: "Actiune",
+                    template: '<button class="btn btn-primary">Sterge</button>'
                 }
             ]
         });

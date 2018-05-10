@@ -1,6 +1,6 @@
 rospitals.views.doctors.DoctorsList = function () {
     this.init();
-}
+};
 
 rospitals.views.doctors.DoctorsList.prototype = {
     init: function () {
