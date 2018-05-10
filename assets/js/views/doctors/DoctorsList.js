@@ -11,6 +11,28 @@ rospitals.views.doctors.DoctorsList.prototype = {
     attachListeners: function () {
         //https://docs.telerik.com/kendo-ui/knowledge-base/filter-all-columns-with-one-textbox
         $('#filter').on('input', $.proxy(this.onSearchInput, this));
+        
+        //$('.k-grid-delete').on('click', function(){ alert('a');});// does not work because the delete button is not created yet.
+        $(document).on('click', '.k-grid-delete', function(){ 
+            if (confirm('Are you sure you want to remove this doctor?')){
+              var id = $(this).parent().siblings(':first').html();  
+                
+              $.ajax({
+                    url: "http://localhost:3000/api/doctors/"+id,
+                    type: 'DELETE',
+                    success: function(result) {
+                        // Do something with the result: refresh grid data + message
+                        alert('The doctor was successfully removed');
+                        console.log(result);
+                        //location.reload();
+                        $('.doctors').click();
+                    }
+                });
+              
+            } else {
+                return;
+            }            
+        });
     },
     onSearchInput: function (e) {
         // cacheing
@@ -65,7 +87,9 @@ rospitals.views.doctors.DoctorsList.prototype = {
             dataSource: {
                 type: "json",
                 transport: {
-                    read: "http://localhost:3000/api/xjoin?_join=d.doctors,_j,s.specialties&_on1=(d.specialty_id,eq,s.id)&_fields=d.id,d.fullname,d.title,d.rating,d.doctor_rank,s.name,d.specialty_id"
+                    read: "http://localhost:3000/api/xjoin?_join=d.doctors,_j,s.specialties&_on1=(d.specialty_id,eq,s.id)&_fields=d.id,d.fullname,d.title,d.rating,d.doctor_rank,s.name,d.specialty_id",
+                    //destroy: "http://localhost:3000/api/doctors/:id" //HTTP Type: DELETE
+                    //https://demos.telerik.com/kendo-ui/grid/editing-inline
                 },
                 schema: {
                     model: {
@@ -101,8 +125,9 @@ rospitals.views.doctors.DoctorsList.prototype = {
                 },
                 {
                     field: "s_name",
-                    title: "specialitate"
-                }
+                    title: "Specialitate"
+                },
+                { command: "destroy", title: "Actions"}
             ]
         }).data('kendoGrid');
     }
