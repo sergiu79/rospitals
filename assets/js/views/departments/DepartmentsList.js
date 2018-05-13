@@ -5,9 +5,38 @@ rospitals.views.departments.DepartmentsList = function departmentsList() {
 rospitals.views.departments.DepartmentsList.prototype = {
   init: function () {
     this.loadData();
+    this.attachListeners();
   },
   attachListeners: function () {
-
+    $('.departments-list').on('click', '.delete-button', $.proxy(this.onDeleteButton, this));
+  },
+  onDeleteButton: function (event) {
+    if (confirm('Are you sure you want to remove this department?')) {
+      var uid = $(event.currentTarget).closest('tr').data('uid');
+      var record = this.grid.dataSource.getByUid(uid);
+      //console.log(record);
+      var id = record.id;
+      this.removeDepartment(id);
+    }
+  },
+  removeDepartment: function (id) {
+    $.ajax({
+      url: "http://localhost:3000/api/specialties/" + id,
+      type: 'DELETE',
+      success: $.proxy(this.onDepartmentSuccessfullyRemoved, this),
+      error: $.proxy(this.onDepartmentNotSuccessfullyRemoved, this)
+    });
+  },
+  onDepartmentSuccessfullyRemoved: function (result) {
+    if (result && result.affectedRows > 0) {
+      alert('The department was successfully removed');
+      this.grid.dataSource.read();
+    } else {
+      alert('The department cannot be removed');
+    }
+  },
+  onDepartmentNotSuccessfullyRemoved: function (result) {
+    alert('An error occured. The department was not removed');
   },
   loadData: function () {
 
@@ -48,6 +77,10 @@ rospitals.views.departments.DepartmentsList.prototype = {
           title: "Nume",
           width: 400
         },
+        {
+          title: "Actiuni",
+          template: '<button class="btn btn-primary delete-button">Sterge</button>'
+        }
       ]
     }).data('kendoGrid');
   }
