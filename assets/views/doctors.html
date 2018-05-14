@@ -1,13 +1,65 @@
 <div class="container">
     <div class="row">
-        <div class="col-8">
+        <div class="col-6">
             <h1> Doctori </h1>
         </div>
         <div class="col-4">
-            <div class="form-inline float-right pt-2">
+            <div class="form-inline float-right pt-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Cauta doctori..." aria-label="Search" id="filter">
+            </div>
+        </div>
+        <div class="col-2 pr-0">
+            <div class="form-inline float-right pt-3 ">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#doctorModal">
+                    Adauga
+                </button>
             </div>
         </div>
     </div>
     <div class="doctors-list"></div>
+</div>
+
+<!-- Modal form -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="doctorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Adauga doctor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="http://localhost:3000/api/doctors" method="post" id="doctorsForm">
+                    <div class="form-group mr-3">
+                        <label for="fullname">Nume</label>
+                        <input type="text" class="form-control" name="fullname" id="fullname">
+                    </div>
+                     <div class="form-group mr-3">
+                        <label for="title">Tip</label>
+                        <input type="text" class="form-control" name="rank" id="title">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="specialty_id">Specialitate</label>
+                        <select class="form-control" name="specialty_id" id="specialty_id">
+                            <option value="1">Alergologie si imunologie</option>
+                            <option value="2">Anestezie si terapie intensiva</option>
+                            <option value="3">Cardiologie</option>
+                            <option value="4">Chirurgie generala</option>
+                        </select>
+                        <input type="hidden" name="rating" value="0">
+                    </div>
+                    <!-- <input type="submit" value="Submit"> -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuleaza</button>
+                <button type="button" class="btn btn-primary" id="saveDoctor">Salveaza</button>
+            </div>
+        </div>
+    </div>
 </div>

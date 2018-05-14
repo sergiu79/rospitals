@@ -12,6 +12,20 @@ rospitals.views.doctors.DoctorsList.prototype = {
         //https://docs.telerik.com/kendo-ui/knowledge-base/filter-all-columns-with-one-textbox
         $('#filter').on('input', $.proxy(this.onSearchInput, this));
         $('.doctors-list').on('click', '.delete-button', $.proxy(this.onDeleteButton, this));
+        $('#saveDoctor').on('click', function () {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/api/doctors",
+                data: $("#doctorsForm").serialize(), // serializes the form's elements.
+                success: function (data)
+                {
+                    alert("Doctorul a fost adaugat in baza de date!");
+                    $('#doctorModal').modal('hide');
+                    //$('.doctors').click();
+                    rospitals.views.doctors.DoctorsList.prototype.init();
+                }
+            });
+        })
     },
     onDeleteButton: function (event) {
         if (confirm('Are you sure you want to remove this doctor?')) {
@@ -97,8 +111,6 @@ rospitals.views.doctors.DoctorsList.prototype = {
                 type: "json",
                 transport: {
                     read: "http://localhost:3000/api/xjoin?_join=d.doctors,_j,s.specialties&_on1=(d.specialty_id,eq,s.id)&_fields=d.id,d.fullname,d.title,d.rating,d.rank,s.name,d.specialty_id",
-                    //destroy: "http://localhost:3000/api/doctors/:id" //HTTP Type: DELETE
-                    //https://demos.telerik.com/kendo-ui/grid/editing-inline
                 },
                 schema: {
                     model: {
