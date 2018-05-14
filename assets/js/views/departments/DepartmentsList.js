@@ -4,115 +4,110 @@ rospitals.views.departments.DepartmentsList = function departmentsList() {
 
 rospitals.views.departments.DepartmentsList.prototype = {
 
-    init: function () {
-        this.attachListeners();
+init: function () {
+this.attachListeners();
         this.loadData();
-    },
-    attachListeners: function () {
+},
+        attachListeners: function () {
         $('.add-button').on('click', $.proxy(this.onAddButton, this));
-        $('.departments-list').on('click', '.delete-button', $.proxy(this.onDeleteButton, this));
-    },
-    
-    onAddButton: function () {
+                $('.departments-list').on('click', '.delete-button', $.proxy(this.onDeleteButton, this));
+        },
+        onAddButton: function () {
         var record = $(".add-specialty").val();
-        this.addDepartment(record);
-     },
-     
-    addDepartment: function (record) {
+                this.addDepartment(record);
+        },
+        addDepartment: function (record) {
         $.ajax({
-            url: "http://localhost:3000/api/specialties/",
-            type:'POST',
-            data:{
+        url: "http://localhost:3000/api/specialties/",
+                type:'POST',
+                data:{
                 name: record
-            },
-            success: $.proxy(this.onDepartmentSuccessfullyAdded, this),
-            error: $.proxy(this.onDepartmentNotSuccessfullyAdded, this)
+                },
+                success: $.proxy(this.onDepartmentSuccessfullyAdded, this),
+                error: $.proxy(this.onDepartmentNotSuccessfullyAdded, this)
         });
-    },
-
-    onDepartmentSuccessfullyAdded: function () {
+        },
+        onDepartmentSuccessfullyAdded: function () {
         alert('Specialitatea a fost introdusa cu succes');
-        //reloads departments list data from server
-        this.grid.dataSource.read();
-    },
-
-    onDepartmentNotSuccessfullyAdded: function () {
+                //reloads departments list data from server
+                this.grid.dataSource.read();
+        },
+        onDepartmentNotSuccessfullyAdded: function () {
         alert('Specialitatea nu a fost introdusa cu succes');
-    },
-  
-  onDeleteButton: function (event) {
-    if (confirm('Are you sure you want to remove this department?')) {
-      var uid = $(event.currentTarget).closest('tr').data('uid');
-      var record = this.grid.dataSource.getByUid(uid);
-      //console.log(record);
-      var id = record.id;
-      this.removeDepartment(id);
-    }
-  },
-  removeDepartment: function (id) {
-    $.ajax({
-      url: "http://localhost:3000/api/specialties/" + id,
-      type: 'DELETE',
-      success: $.proxy(this.onDepartmentSuccessfullyRemoved, this),
-      error: $.proxy(this.onDepartmentNotSuccessfullyRemoved, this)
-    });
-  },
-  onDepartmentSuccessfullyRemoved: function (result) {
-    if (result && result.affectedRows > 0) {
-      alert('The department was successfully removed');
-      this.grid.dataSource.read();
-    } else {
-      alert('The department cannot be removed');
-    }
-  },
-  onDepartmentNotSuccessfullyRemoved: function (result) {
-    alert('An error occured. The department was not removed');
-  },
-
-    loadData: function () {
+        },
+        onDeleteButton: function (event) {
+        if (confirm('Are you sure you want to remove this department?')) {
+        var uid = $(event.currentTarget).closest('tr').data('uid');
+                var record = this.grid.dataSource.getByUid(uid);
+                //console.log(record);
+                var id = record.id;
+                this.removeDepartment(id);
+        }
+        },
+        removeDepartment: function (id) {
+        $.ajax({
+        url: "http://localhost:3000/api/specialties/" + id,
+                type: 'DELETE',
+                success: $.proxy(this.onDepartmentSuccessfullyRemoved, this),
+                error: $.proxy(this.onDepartmentNotSuccessfullyRemoved, this)
+        });
+        },
+        onDepartmentSuccessfullyRemoved: function (result) {
+        if (result && result.affectedRows > 0) {
+        alert('The department was successfully removed');
+                this.grid.dataSource.read();
+        } else {
+        alert('The department cannot be removed');
+        }
+        },
+        onDepartmentNotSuccessfullyRemoved: function (result) {
+        alert('An error occured. The department was not removed');
+        },
+        loadData: function () {
 
         this.grid = $('.departments-list').kendoGrid({
-            dataSource: {
-                dataType: "json",
+        dataSource: {
+        dataType: "json",
                 transport: {
-                    read: "http://localhost:3000/api/specialties?_size=99"
+                read: "http://localhost:3000/api/specialties?_size=99"
                 },
                 schema: {
-                    model: {
-                        fields: {
-                            id: {
-                                type: "number"
-                            },
-                            name: {
-                                type: "string"
-                            }
+                model: {
+                fields: {
+                id: {
+                type: "number"
+                },
+                        name: {
+                        type: "string"
                         }
-                    }
+                }
+                }
                 },
                 pageSize: 20,
                 serverPaging: false,
                 serverFiltering: false,
                 serverSorting: false
-            },
-            height: 550,
-            filterable: true,
-            sortable: true,
-            pageable: true,
-            columns: [{
-                    field: "id",
-                    width: 50,
-                    filterable: false,
-                    hidden: true
+        },
+                height: 550,
+                filterable: true,
+                sortable: true,
+                pageable: true,
+                columns: [{
+                field: "id",
+                        width: 50,
+                        filterable: false,
+                        hidden: true
                 },
                 {
-                    field: "name",
-                    title: "Nume",
-                    width: 400
+                field: "name",
+                        title: "Nume",
+                        width: 400
                 },
                 {
-          title: "Actiuni",
-          template: '<button class="btn btn-primary delete-button">Sterge</button>'
+                title: "Actiuni",
+                        template: '<button class="btn btn-primary delete-button">Sterge</button>'
                 }
-            ]
+                ]
         }).data('kendoGrid');
-    }
+        }
+    };
