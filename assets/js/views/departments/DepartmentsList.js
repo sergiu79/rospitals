@@ -29,6 +29,7 @@ this.attachListeners();
         },
         onDepartmentSuccessfullyAdded: function () {
         alert('Specialitatea a fost introdusa cu succes');
+        $('#addSpecialtyModal').modal('hide');
                 //reloads departments list data from server
                 this.grid.dataSource.read();
         },
