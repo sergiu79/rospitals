@@ -25,7 +25,7 @@ rospitals.views.doctors.DoctorsList.prototype = {
                     rospitals.views.doctors.DoctorsList.prototype.init();
                 }
             });
-        })
+        });
     },
     onDeleteButton: function (event) {
         if (confirm('Are you sure you want to remove this doctor?')) {
@@ -151,7 +151,7 @@ rospitals.views.doctors.DoctorsList.prototype = {
                 },
                 {
                     title: "Actiuni",
-                    template: '<button class="btn btn-primary delete-button">Sterge</button>'
+                    template: '<button class="btn btn-primary delete-button align-middle">Sterge</button>'
                 }
             ]
         }).data('kendoGrid');

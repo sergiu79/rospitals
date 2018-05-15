@@ -1,8 +1,82 @@
 <div class="container">
   <div class="row">
-      <div class="col-8">
-          <h1> Spitale </h1>
-      </div>
-  </div>
+        <div class="col-8">
+            <h1> Spitale </h1>
+        </div>
+        <div class="col-4 pr-0">
+            <div class="form-inline float-right pt-3 ">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hospitalModal">
+                    Adauga
+                </button>
+            </div>
+        </div>
+    </div>
   <div class="hospitals-list"></div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="hospitalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Adauga spital</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="http://localhost:3000/api/hospitals" method="post" id="hospitalForm" class="modalForm">
+                    <div class="form-group">
+                        <label for="name">Nume</label>
+                        <input type="text" class="form-control" name="name" id="name">
+                    </div>
+                     <div class="form-group">
+                        <label for="city">Oras</label>
+                        <input type="text" class="form-control" name="city" id="city">
+                    </div>
+                    <div class="form-group ">
+                        <label for="county">Judet</label>
+                        <input type="text" class="form-control" name="county" id="county">
+                    </div>
+                    <div class="form-group ">
+                        <label for="type">Tip</label>
+                        <input type="text" class="form-control" name="type" id="type">
+                    </div>
+                    <div class="form-group ">
+                        <label for="address">Adresa</label>
+                        <input type="text" class="form-control" name="address" id="address">
+                    </div>
+                     <div class="form-group ">
+                        <label for="phone">Telefon</label>
+                        <input type="text" class="form-control" name="phone" id="phone">
+                    </div>
+                    <div class="form-group ">
+                        <label for="fax">Fax</label>
+                        <input type="text" class="form-control" name="fax" id="fax">
+                    </div>
+                    <div class="form-group ">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email">
+                    </div>
+                    <div class="form-group ">
+                        <label for="website">Website</label>
+                        <input type="text" class="form-control" name="website" id="website">
+                    </div>
+                    <div class="form-group ">
+                        <label for="lat">Latitudine</label>
+                        <input type="text" class="form-control" name="lat" id="lat">
+                    </div>
+                    <div class="form-group ">
+                        <label for="long">Longitudine</label>
+                        <input type="text" class="form-control" name="long" id="long">
+                    </div>
+                     <!--<input type="submit" value="Submit">--> 
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuleaza</button>
+                <button type="button" class="btn btn-primary" id="saveHospital">Salveaza</button>
+            </div>
+        </div>
+    </div>
 </div>

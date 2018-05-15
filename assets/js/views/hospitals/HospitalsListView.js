@@ -10,6 +10,20 @@ rospitals.views.hospitals.HospitalsListView.prototype = {
     },
     attachListeners: function () {
         $('.hospitals-list').on('click', '.delete-button', $.proxy(this.onDeleteButton, this));
+          $('#saveHospital').on('click', function () {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/api/hospitals",
+                data: $("#hospitalForm").serialize(), // serializes the form's elements.
+                success: function (data)
+                {
+                    alert("Spitalul a fost adaugat in baza de date!");
+                    $('#hospitalModal').modal('hide');
+                    //$('.doctors').click();
+                    rospitals.views.hospitals.HospitalsListView.prototype.init();
+                }
+            });
+        });
     },
     onDeleteButton: function (event) {
         if (confirm('Are you sure you want to remove this hospital?')) {
