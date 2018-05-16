@@ -59,7 +59,7 @@ rospitals.App.prototype = {
             localStorage.setItem('isLoggedIn', true);
             localStorage.setItem('isAdmin', true);
             localStorage.setItem('email', 'admin@rospitals.ro');
-            localStorage.setItem('username', JSON.stringify({first:'Ion', last:'Popescu'}));
+            localStorage.setItem('username', JSON.stringify({first:'Administrator', last:''}));
             $.cookie('isLoggedIn', true, { expires: 7, path: '/' });
             // Hide login form
             $('#login-form').addClass('hide');
