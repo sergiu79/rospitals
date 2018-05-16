@@ -11,21 +11,26 @@ rospitals.views.doctors.DoctorsList.prototype = {
     attachListeners: function () {
         //https://docs.telerik.com/kendo-ui/knowledge-base/filter-all-columns-with-one-textbox
         $('#filter').on('input', $.proxy(this.onSearchInput, this));
+        //$('#filter').on('click', $.proxy(this.onSearchInput, this));
         $('.doctors-list').on('click', '.delete-button', $.proxy(this.onDeleteButton, this));
-        $('#saveDoctor').on('click', function () {
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:3000/api/doctors",
-                data: $("#doctorsForm").serialize(), // serializes the form's elements.
-                success: function (data)
-                {
-                    alert("Doctorul a fost adaugat in baza de date!");
-                    $('#doctorModal').modal('hide');
-                    //$('.doctors').click();
-                    rospitals.views.doctors.DoctorsList.prototype.init();
-                }
-            });
+        $('#saveDoctor').on('click', $.proxy(this.onDoctorSave, this));
+    },
+    onDoctorSave: function () {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/doctors",
+            data: $("#doctorsForm").serialize(), // serializes the form's elements.
+            success: $.proxy(this.onDoctorSuccessfullySaved, this),
+            success: $.proxy(this.onDoctorUnSuccessfullySaved, this)
         });
+    },
+    onDoctorUnSuccessfullySaved: function(response) {
+      alert('Doctorul nu a fost salvat');  
+    },
+    onDoctorSuccessfullySaved: function (data) {
+        alert("Doctorul a fost adaugat in baza de date!");
+        $('#doctorModal').modal('hide');
+        this.grid.dataSource.read();
     },
     onDeleteButton: function (event) {
         if (confirm('Are you sure you want to remove this doctor?')) {
@@ -155,5 +160,11 @@ rospitals.views.doctors.DoctorsList.prototype = {
                 }
             ]
         }).data('kendoGrid');
+    },
+    destroy: function () {
+        console.log('destroy');
+        $('#filter').off();
+        $('.doctors-list').off();
+        $('#saveDoctor').off();
     }
 };
