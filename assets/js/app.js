@@ -22,28 +22,36 @@ rospitals.App.prototype = {
     },
         
     loadView: function (event, config) {
+        try{
+            rospitalsApp = rospitalsApp || null;
+        } catch (e) {
+             rospitalsApp = null;
+        }
         var moduleName = $(event.currentTarget).attr('class') || event.module || 'home';
         var modules = ['home', 'departments', 'doctors', 'contact', 'hospitals-list', 'hospital-detail'];
         var paths = ['assets/views/home.html', 'assets/views/departments.html', 'assets/views/doctors.html',
             'assets/views/contact.html', 'assets/views/hospitals-list.html', 'assets/views/hospital-detail.html'];
         var path = paths[modules.indexOf(moduleName)];
+        if (rospitalsApp && rospitalsApp.currentView  && rospitalsApp.currentView.destroy){
+            rospitalsApp.currentView.destroy();
+        }
         $('main').load(path, function () {
             switch (moduleName) {
                 case 'home':
-                    var homeView = new rospitals.views.hospitals.HomeView();
+                    rospitalsApp.currentView = new rospitals.views.hospitals.HomeView();
                     break;
                 case 'doctors':
-                    var doctorsView = new rospitals.views.doctors.DoctorsList();
+                    rospitalsApp.currentView  = new rospitals.views.doctors.DoctorsList();
                     break;
                case 'departments':
-                    var departmentsList = new rospitals.views.departments.DepartmentsList();
+                    rospitalsApp.currentView  = new rospitals.views.departments.DepartmentsList();
                     break;
                 case 'contact':
                     break;
                 case 'hospital-detail':
-                    var hospitalDetailView = new rospitals.views.hospitals.HospitalDetailView(config);
+                    rospitalsApp.currentView  = new rospitals.views.hospitals.HospitalDetailView(config);
                 case 'hospitals-list':
-                    var hospitalsListView = new rospitals.views.hospitals.HospitalsListView();
+                    rospitalsApp.currentView  = new rospitals.views.hospitals.HospitalsListView();
                     break;
 
             }

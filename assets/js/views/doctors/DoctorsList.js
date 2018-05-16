@@ -4,10 +4,34 @@ rospitals.views.doctors.DoctorsList = function () {
 
 rospitals.views.doctors.DoctorsList.prototype = {
     init: function () {
+        this.initKendoComponents();
         this.attachListeners();
         this.loadData();
     },
-
+    initKendoComponents: function () {
+        $('#title').kendoDropDownList({
+            dataSource: ['medic primar','medic specialist']
+        }).data('kendoDropDownList');
+        $('#specialty_id').kendoDropDownList({
+            autoWidth: true,
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: "http://localhost:3000/api/specialties",
+                },
+                schema: {
+                    model: {
+                        fields: {
+                            id: {type: "number"},
+                            name: {type: "string"}
+                        }
+                    }
+                }
+            },
+            dataTextField: 'name',
+            dataValueField: 'id'
+        }).data('kendoDropDownList');
+    },
     attachListeners: function () {
         //https://docs.telerik.com/kendo-ui/knowledge-base/filter-all-columns-with-one-textbox
         $('#filter').on('input', $.proxy(this.onSearchInput, this));
@@ -21,11 +45,27 @@ rospitals.views.doctors.DoctorsList.prototype = {
                 {
                     alert("Doctorul a fost adaugat cu succes in baza de date!");
                     $('#doctorModal').modal('hide');
-                    //$('.doctors').click();
                     rospitals.views.doctors.DoctorsList.prototype.init();
                 }
             });
+        $('#saveDoctor').on('click', $.proxy(this.onDoctorSave, this));
+    },
+    onDoctorSave: function () {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/doctors",
+            data: $("#doctorsForm").serialize(), // serializes the form's elements.
+            success: $.proxy(this.onDoctorSuccessfullySaved, this),
+            error: $.proxy(this.onDoctorUnSuccessfullySaved, this)
         });
+    },
+    onDoctorUnSuccessfullySaved: function(response) {
+      alert('Doctorul nu a fost salvat');  
+    },
+    onDoctorSuccessfullySaved: function (data) {
+        alert("Doctorul a fost adaugat in baza de date!");
+        $('#doctorModal').modal('hide');
+        this.grid.dataSource.read();
     },
     onDeleteButton: function (event) {
         if (confirm('Sunteti sigur ca vreti sa stergeti acest doctor?')) {
@@ -155,5 +195,11 @@ rospitals.views.doctors.DoctorsList.prototype = {
                 }
             ]
         }).data('kendoGrid');
+    },
+    destroy: function () {
+        console.log('destroy');
+        $('#filter').off();
+        $('.doctors-list').off();
+        $('#saveDoctor').off();
     }
 };
