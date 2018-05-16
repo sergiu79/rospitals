@@ -70,6 +70,10 @@ form {
     display:  inline-flex;
 }
 
+.modalForm {
+    display: block;
+}
+
 input.form-control {
     margin: 15px 5px 5px 5px;
 }
@@ -155,3 +159,5 @@ nav.footer-nav {
 .hide {
     display: none;
 }
+
+.center{margin:auto;}
