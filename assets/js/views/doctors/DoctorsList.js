@@ -10,11 +10,7 @@ rospitals.views.doctors.DoctorsList.prototype = {
     },
     initKendoComponents: function () {
         $('#title').kendoDropDownList({
-            dataSource: [{name: 'medic primar', value: 'medic primar'},
-                {name: 'medic specialist', value: 'medic specialist'}],
-            dataTextField: 'name',
-            dataValueField: 'value',
-//            template: '<span>#= name#</span>',
+            dataSource: ['medic primar','medic specialist']
         }).data('kendoDropDownList');
         $('#specialty_id').kendoDropDownList({
             autoWidth: true,
