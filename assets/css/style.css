@@ -150,10 +150,14 @@ nav.footer-nav {
     display:  inline-block;
     margin-top: 20px;
 }
-.footer-nav, li{
+.footer-nav li{
     display: inline;
     padding-right: 15px;
     font-size: 14pt;
+}
+
+.specialty_select {
+    width:380px !important;
 }
 /* helpers */
 .hide {

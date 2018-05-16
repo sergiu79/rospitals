@@ -4,10 +4,34 @@ rospitals.views.doctors.DoctorsList = function () {
 
 rospitals.views.doctors.DoctorsList.prototype = {
     init: function () {
+        this.initKendoComponents();
         this.attachListeners();
         this.loadData();
     },
-
+    initKendoComponents: function () {
+        $('#title').kendoDropDownList({
+            dataSource: ['medic primar','medic specialist']
+        }).data('kendoDropDownList');
+        $('#specialty_id').kendoDropDownList({
+            autoWidth: true,
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: "http://localhost:3000/api/specialties",
+                },
+                schema: {
+                    model: {
+                        fields: {
+                            id: {type: "number"},
+                            name: {type: "string"}
+                        }
+                    }
+                }
+            },
+            dataTextField: 'name',
+            dataValueField: 'id'
+        }).data('kendoDropDownList');
+    },
     attachListeners: function () {
         //https://docs.telerik.com/kendo-ui/knowledge-base/filter-all-columns-with-one-textbox
         $('#filter').on('input', $.proxy(this.onSearchInput, this));
@@ -21,7 +45,7 @@ rospitals.views.doctors.DoctorsList.prototype = {
             url: "http://localhost:3000/api/doctors",
             data: $("#doctorsForm").serialize(), // serializes the form's elements.
             success: $.proxy(this.onDoctorSuccessfullySaved, this),
-            success: $.proxy(this.onDoctorUnSuccessfullySaved, this)
+            error: $.proxy(this.onDoctorUnSuccessfullySaved, this)
         });
     },
     onDoctorUnSuccessfullySaved: function(response) {
