@@ -4,28 +4,60 @@ rospitals.views.doctors.DoctorsList = function () {
 
 rospitals.views.doctors.DoctorsList.prototype = {
     init: function () {
+        this.initKendoComponents();
         this.attachListeners();
         this.loadData();
     },
-
+    initKendoComponents: function () {
+        $('#title').kendoDropDownList({
+            dataSource: [{name: 'medic primar', value: 'medic primar'},
+                {name: 'medic specialist', value: 'medic specialist'}],
+            dataTextField: 'name',
+            dataValueField: 'value',
+//            template: '<span>#= name#</span>',
+        }).data('kendoDropDownList');
+        $('#specialty_id').kendoDropDownList({
+            autoWidth: true,
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: "http://localhost:3000/api/specialties",
+                },
+                schema: {
+                    model: {
+                        fields: {
+                            id: {type: "number"},
+                            name: {type: "string"}
+                        }
+                    }
+                }
+            },
+            dataTextField: 'name',
+            dataValueField: 'id'
+        }).data('kendoDropDownList');
+    },
     attachListeners: function () {
         //https://docs.telerik.com/kendo-ui/knowledge-base/filter-all-columns-with-one-textbox
         $('#filter').on('input', $.proxy(this.onSearchInput, this));
         $('.doctors-list').on('click', '.delete-button', $.proxy(this.onDeleteButton, this));
-        $('#saveDoctor').on('click', function () {
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:3000/api/doctors",
-                data: $("#doctorsForm").serialize(), // serializes the form's elements.
-                success: function (data)
-                {
-                    alert("Doctorul a fost adaugat in baza de date!");
-                    $('#doctorModal').modal('hide');
-                    //$('.doctors').click();
-                    rospitals.views.doctors.DoctorsList.prototype.init();
-                }
-            });
+        $('#saveDoctor').on('click', $.proxy(this.onDoctorSave, this));
+    },
+    onDoctorSave: function () {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/doctors",
+            data: $("#doctorsForm").serialize(), // serializes the form's elements.
+            success: $.proxy(this.onDoctorSuccessfullySaved, this),
+            error: $.proxy(this.onDoctorUnSuccessfullySaved, this)
         });
+    },
+    onDoctorUnSuccessfullySaved: function (response) {
+        alert('Doctorul nu a fost salvat');
+    },
+    onDoctorSuccessfullySaved: function (data) {
+        alert("Doctorul a fost adaugat in baza de date!");
+        $('#doctorModal').modal('hide');
+        this.grid.dataSource.read();
     },
     onDeleteButton: function (event) {
         if (confirm('Are you sure you want to remove this doctor?')) {
