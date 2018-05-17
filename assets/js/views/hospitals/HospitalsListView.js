@@ -26,7 +26,7 @@ rospitals.views.hospitals.HospitalsListView.prototype = {
         });
     },
     onDeleteButton: function (event) {
-        if (confirm('Are you sure you want to remove this hospital?')) {
+        if (confirm('Sunteti sigur ca doriti sa stergeti spitalul?')) {
             var uid = $(event.currentTarget).closest('tr').data('uid');
             var record = this.grid.dataSource.getByUid(uid);
             var id = record.id;
@@ -43,13 +43,13 @@ rospitals.views.hospitals.HospitalsListView.prototype = {
     },
 
     onDoctorSuccessfullyRemoved: function (result) {
-        alert('The hospital was successfully removed');
+        alert('Spitalul a fost sters cu succes');
         //reloads doctors list data from server
         this.grid.dataSource.read();
     },
 
     onDoctorNotSuccessfullyRemoved: function (result) {
-        alert('The hospital was not successfully removed');
+        alert('Spitalul nu a putut fi sters');
     },
     onRowClick: function (event) {
 

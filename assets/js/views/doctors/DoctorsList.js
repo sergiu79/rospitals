@@ -35,8 +35,19 @@ rospitals.views.doctors.DoctorsList.prototype = {
     attachListeners: function () {
         //https://docs.telerik.com/kendo-ui/knowledge-base/filter-all-columns-with-one-textbox
         $('#filter').on('input', $.proxy(this.onSearchInput, this));
-        //$('#filter').on('click', $.proxy(this.onSearchInput, this));
         $('.doctors-list').on('click', '.delete-button', $.proxy(this.onDeleteButton, this));
+        $('#saveDoctor').on('click', function () {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/api/doctors",
+                data: $("#doctorsForm").serialize(), // serializes the form's elements.
+                success: function (data)
+                {
+                    alert("Doctorul a fost adaugat cu succes in baza de date!");
+                    $('#doctorModal').modal('hide');
+                    rospitals.views.doctors.DoctorsList.prototype.init();
+                }
+            });
         $('#saveDoctor').on('click', $.proxy(this.onDoctorSave, this));
     },
     onDoctorSave: function () {
@@ -57,7 +68,7 @@ rospitals.views.doctors.DoctorsList.prototype = {
         this.grid.dataSource.read();
     },
     onDeleteButton: function (event) {
-        if (confirm('Are you sure you want to remove this doctor?')) {
+        if (confirm('Sunteti sigur ca vreti sa stergeti acest doctor?')) {
             var uid = $(event.currentTarget).closest('tr').data('uid');
             var record = this.grid.dataSource.getByUid(uid);
             var id = record.d_id;
@@ -74,13 +85,13 @@ rospitals.views.doctors.DoctorsList.prototype = {
     },
 
     onDoctorSuccessfullyRemoved: function (result) {
-        alert('The doctor was successfully removed');
+        alert('Doctorul a fost sters cu succes');
         //reloads doctors list data from server
         this.grid.dataSource.read();
     },
 
     onDoctorNotSuccessfullyRemoved: function (result) {
-        alert('The doctor was not successfully removed');
+        alert('Doctorul nu a fost sters cu succes');
     },
 
     onSearchInput: function (e) {
@@ -139,7 +150,7 @@ rospitals.views.doctors.DoctorsList.prototype = {
             dataSource: {
                 type: "json",
                 transport: {
-                    read: "http://localhost:3000/api/xjoin?_join=d.doctors,_j,s.specialties&_on1=(d.specialty_id,eq,s.id)&_fields=d.id,d.fullname,d.title,d.rating,d.rank,s.name,d.specialty_id",
+                    read: "http://localhost:3000/api/xjoin?_join=d.doctors,_j,s.specialties&_on1=(d.specialty_id,eq,s.id)&_fields=d.id,d.fullname,d.title,d.rating,d.rank,s.name,d.specialty_id&_size=99"
                 },
                 schema: {
                     model: {
