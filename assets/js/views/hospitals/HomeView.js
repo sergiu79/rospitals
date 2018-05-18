@@ -1,6 +1,6 @@
 rospitals.views.hospitals.HomeView = function() {
     this.init();
-}
+};
 rospitals.views.hospitals.HomeView.prototype = {
     init: function () {
         this.attachListeners();

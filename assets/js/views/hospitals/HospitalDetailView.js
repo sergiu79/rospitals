@@ -2,7 +2,7 @@ rospitals.views.hospitals.HospitalDetailView = function (config) {
     this.id = config.id;
     this.hospitalData = null;
     this.init();
-}
+};
 
 rospitals.views.hospitals.HospitalDetailView.prototype = {
 
@@ -39,7 +39,7 @@ rospitals.views.hospitals.HospitalDetailView.prototype = {
         var pos = {
             lat: this.hospitalData.lat,
             lng: this.hospitalData.long
-        }
+        };
         var map, infoWindow;
         map = new google.maps.Map($('#map')[0], {
             center: pos,
