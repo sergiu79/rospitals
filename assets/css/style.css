@@ -115,7 +115,7 @@ button.btn.btn-primary.btn-block {
 .hospitals-list.k-grid.k-widget.k-display-block {
     width: 1140px;
     margin: auto;
-  }
+}
 
 .row {
     width: 1140px;
@@ -123,27 +123,39 @@ button.btn.btn-primary.btn-block {
 }
 
 .img-size {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
+    margin: 7px 40px 6px 0px;
 }
 
 a {
     text-decoration:  none;
+    color:#ccc;
 }
 
 a:hover {
-    text-decoration: blink;
-    color: darkblue;
+    text-decoration: none;
+    color: #00b6bd;
     font-weight: 600;
 }
 
 .disclaimer {
     text-align:  center;
+    background-color: #282A2B;
+}
+
+.disclaimer p {
+    color:#ccc;
 }
 
 .social-media {
     float: right;
-    margin-top: 20px;
+    display: inline-grid;
+}
+
+footer{
+    background-color: #373839;
+    margin-top: 30px;
 }
 
 nav.footer-nav {
@@ -151,7 +163,7 @@ nav.footer-nav {
     margin-top: 20px;
 }
 .footer-nav li{
-    display: inline;
+    display: block;
     padding-right: 15px;
     font-size: 14pt;
 }
@@ -164,4 +176,6 @@ nav.footer-nav {
     display: none;
 }
 
-.center{margin:auto;}
+.center{
+    margin:auto;
+}

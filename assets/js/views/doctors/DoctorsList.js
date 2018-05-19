@@ -1,6 +1,6 @@
 rospitals.views.doctors.DoctorsList = function () {
     this.init();
-}
+};
 
 rospitals.views.doctors.DoctorsList.prototype = {
     init: function () {
@@ -10,14 +10,14 @@ rospitals.views.doctors.DoctorsList.prototype = {
     },
     initKendoComponents: function () {
         $('#title').kendoDropDownList({
-            dataSource: ['medic primar','medic specialist']
+            dataSource: ['medic primar', 'medic specialist']
         }).data('kendoDropDownList');
         $('#specialty_id').kendoDropDownList({
             autoWidth: true,
             dataSource: {
                 type: "json",
                 transport: {
-                    read: "http://localhost:3000/api/specialties",
+                    read: "http://localhost:3000/api/specialties"
                 },
                 schema: {
                     model: {
@@ -48,7 +48,8 @@ rospitals.views.doctors.DoctorsList.prototype = {
                     rospitals.views.doctors.DoctorsList.prototype.init();
                 }
             });
-        $('#saveDoctor').on('click', $.proxy(this.onDoctorSave, this));
+            $('#saveDoctor').on('click', $.proxy(this.onDoctorSave, this));
+        });
     },
     onDoctorSave: function () {
         $.ajax({
@@ -59,8 +60,8 @@ rospitals.views.doctors.DoctorsList.prototype = {
             error: $.proxy(this.onDoctorUnSuccessfullySaved, this)
         });
     },
-    onDoctorUnSuccessfullySaved: function(response) {
-      alert('Doctorul nu a fost salvat');  
+    onDoctorUnSuccessfullySaved: function (response) {
+        alert('Doctorul nu a fost salvat');
     },
     onDoctorSuccessfullySaved: function (data) {
         alert("Doctorul a fost adaugat in baza de date!");
